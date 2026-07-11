@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD. Samiul Alam - CV & Portfolio</title>
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Sugina Dev Latin Modern Web Font for LaTeX Style -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sugina-dev/latin-modern-web@1.0.1/style/latinmodern-roman.css" />
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#002b80',
+              50: '#f0f4ff',
+              100: '#d9e2ff',
+              600: '#1d4ed8',
+              700: '#1e40af',
+              800: '#1e3a8a',
+              900: '#002b80'
+            },
+            darkBg: '#0b0f19',
+            darkCard: '#151f32',
+            darkBorder: '#223250'
+          },
+          fontFamily: {
+            sans: ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Latin Modern Roman', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Dark Mode Initializer -->
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-darkBg text-slate-800 dark:text-slate-200 transition-colors duration-300 font-sans min-h-screen flex flex-col">
+
+  <!-- ================= HEADER / CONTROL PANEL (no-print) ================= -->
+  <header class="no-print sticky top-0 z-50 bg-white/80 dark:bg-darkBg/80 backdrop-blur-md border-b border-slate-200 dark:border-darkBorder">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-primary to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-primary/20 group-hover:scale-105 transition-transform duration-300">
+          S
+        </div>
+        <div>
+          <span class="font-bold text-slate-900 dark:text-white tracking-wide block leading-none">MD. SAMIUL ALAM</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Software Developer</span>
+        </div>
+      </a>
+
+      <!-- View Selector & Actions -->
+      <div class="flex items-center space-x-2 md:space-x-4">
+        
+        <!-- Mode Switch Tab Toggle -->
+        <div class="bg-slate-100 dark:bg-slate-800/80 p-1 rounded-full flex items-center border border-slate-200 dark:border-slate-700">
+          <button id="btn-interactive" class="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 shadow bg-primary text-white dark:bg-primary dark:text-white" onclick="switchMode('interactive')">
+            Interactive Web
+          </button>
+          <button id="btn-classic" class="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" onclick="switchMode('classic')">
+            Original PDF
+          </button>
+        </div>
+
+        <div class="h-6 w-[1px] bg-slate-200 dark:bg-slate-700"></div>
+
+        <!-- Dark/Light Theme Button -->
+        <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-colors duration-300" aria-label="Toggle Theme">
+          <!-- Sun Icon (visible in dark mode) -->
+          <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.46 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          <!-- Moon Icon (visible in light mode) -->
+          <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        </button>
+
+        <!-- Print/Download Button -->
+        <button onclick="window.print()" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-colors duration-300" aria-label="Print or Save CV">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTAINER ================= -->
+  <main class="flex-grow">
+    
+    <!-- 1. INTERACTIVE PORTFOLIO MODE -->
+    <div id="interactive-mode" class="transition-all duration-500 font-interactive">
+      
+      <!-- Hero/Header Section -->
+      <section class="relative overflow-hidden py-16 md:py-24 bg-gradient-to-b from-primary-50/50 via-transparent to-transparent dark:from-primary-900/10">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center md:justify-between gap-8 md:gap-12">
+          
+          <!-- Text Info -->
+          <div class="flex-1 text-center md:text-left space-y-6 order-2 md:order-1">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 text-primary dark:text-primary-100 text-xs font-semibold tracking-wide uppercase">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+              <span>Available for Opportunities</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+              MD. SAMIUL ALAM
+            </h1>
+            
+            <p class="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-indigo-500 dark:from-primary dark:to-indigo-400 bg-clip-text text-transparent">
+              Software Developer / .NET Backend Engineer
+            </p>
+            
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-base md:text-lg max-w-2xl">
+              Results-driven Software Engineer specializing in designing and building scalable backend solutions. Proficient in C#, ASP.NET Core, and SQL Server, with a strong focus on architecting relational databases and implementing robust Web APIs.
+            </p>
+
+            <!-- Contact grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto md:mx-0">
+              <!-- Phone -->
+              <a href="tel:+8801945207270" class="flex items-center space-x-3 p-3 bg-white dark:bg-darkCard rounded-xl border border-slate-200 dark:border-darkBorder shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-300">
+                <div class="w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 00.099.281l-.562.562a1 1 0 00-.073.099l-2.02 2.02a11.838 11.838 0 005.022 5.022l2.02-2.02a1 1 0 00.099-.073l.562-.562a1.001 1.001 0 00.281.099l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-slate-400 block">Phone</span>
+                  <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">+880 1945 207270</span>
+                </div>
+              </a>
+              <!-- Email -->
+              <a href="mailto:samiulalam.bd.ngn@gmail.com" class="flex items-center space-x-3 p-3 bg-white dark:bg-darkCard rounded-xl border border-slate-200 dark:border-darkBorder shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-300">
+                <div class="w-9 h-9 rounded-lg bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-slate-400 block">Email</span>
+                  <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[180px] block">samiulalam.bd.ngn@gmail.com</span>
+                </div>
+              </a>
+              <!-- GitHub -->
+              <a href="https://github.com/samiul-bd" target="_blank" class="flex items-center space-x-3 p-3 bg-white dark:bg-darkCard rounded-xl border border-slate-200 dark:border-darkBorder shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-300">
+                <div class="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 flex items-center justify-center">
+                  <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-slate-400 block">GitHub</span>
+                  <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">samiul-bd</span>
+                </div>
+              </a>
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/in/samiulalam-bd/" target="_blank" class="flex items-center space-x-3 p-3 bg-white dark:bg-darkCard rounded-xl border border-slate-200 dark:border-darkBorder shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-colors duration-300">
+                <div class="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                  <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="text-xs text-slate-400 block">LinkedIn</span>
+                  <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">samiulalam-bd</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Avatar Image -->
+          <div class="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-darkBorder relative group order-1 md:order-2 flex-shrink-0">
+            <img src="profile.jpg" alt="MD. Samiul Alam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- Main Columns Grid -->
+      <section class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Left Sidebar Column: Skills & Info -->
+        <div class="lg:col-span-1 space-y-8">
+          
+          <!-- Experience Summary Card -->
+          <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder rounded-2xl p-6 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3 mb-4 flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span>Quick Overview</span>
+            </h3>
+            
+            <div class="space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-slate-500 dark:text-slate-400">Current Role</span>
+                <span class="text-sm font-semibold px-2.5 py-1 rounded bg-blue-50 dark:bg-blue-950/40 text-primary dark:text-primary-100">Intern</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-slate-500 dark:text-slate-400">Current Company</span>
+                <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">Star Computer Systems</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-slate-500 dark:text-slate-400">Training Duration</span>
+                <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">812 Hours (IsDB-BISEW)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-slate-500 dark:text-slate-400">Education</span>
+                <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">BBA (Accounting)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Skills Card -->
+          <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder rounded-2xl p-6 shadow-sm space-y-6">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3 flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              <span>Skills Inventory</span>
+            </h3>
+
+            <!-- Group 1: Languages -->
+            <div class="space-y-2">
+              <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Languages</h4>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/50">C#</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-yellow-50 dark:bg-yellow-950/30 text-yellow-600 dark:text-yellow-400 border border-yellow-100 dark:border-yellow-900/50">JavaScript</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">TypeScript</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-100 dark:border-orange-900/50">HTML/CSS</span>
+              </div>
+            </div>
+
+            <!-- Group 2: Frameworks -->
+            <div class="space-y-2">
+              <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Frameworks & SPAs</h4>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 border border-purple-100 dark:border-purple-900/50">ASP.NET Core Web API</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 border border-purple-100 dark:border-purple-900/50">ASP.NET Core MVC</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-900/50">Angular</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-sky-50 dark:bg-sky-950/30 text-sky-600 dark:text-sky-400 border border-sky-100 dark:border-sky-900/50">React.js</span>
+              </div>
+            </div>
+
+            <!-- Group 3: Databases -->
+            <div class="space-y-2">
+              <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Databases & ORM</h4>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-cyan-50 dark:bg-cyan-950/30 text-cyan-600 dark:text-cyan-400 border border-cyan-100 dark:border-cyan-900/50">MS SQL Server</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-teal-50 dark:bg-teal-950/30 text-teal-600 dark:text-teal-400 border border-teal-100 dark:border-teal-900/50">Entity Framework Core</span>
+              </div>
+            </div>
+
+            <!-- Group 4: Architecture -->
+            <div class="space-y-2">
+              <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Architecture & Patterns</h4>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50">RESTful API</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50">Clean Architecture</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50">CQRS Pattern</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50">MediatR</span>
+              </div>
+            </div>
+
+            <!-- Group 5: Security & Tools -->
+            <div class="space-y-2">
+              <h4 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Security & Tooling</h4>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 border border-rose-100 dark:border-rose-900/50">ASP.NET Core Identity</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 border border-rose-100 dark:border-rose-900/50">JWT Authentication</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Git / GitHub</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Postman</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Swagger</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Language Proficiency Card -->
+          <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder rounded-2xl p-6 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3 mb-4 flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19" />
+              </svg>
+              <span>Languages</span>
+            </h3>
+            
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="font-semibold text-slate-700 dark:text-slate-300">Bengali</span>
+                  <span class="text-xs text-primary dark:text-blue-400 font-bold">Native / Mother Tongue</span>
+                </div>
+                <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                  <div class="bg-primary h-full rounded-full" style="width: 100%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="font-semibold text-slate-700 dark:text-slate-300">English</span>
+                  <span class="text-xs text-primary dark:text-blue-400 font-bold">Fluent - Professional</span>
+                </div>
+                <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                  <div class="bg-gradient-to-r from-primary to-indigo-500 h-full rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Main Column: Experience, Projects, Training, Education -->
+        <div class="lg:col-span-2 space-y-8">
+          
+          <!-- Experience & Training Sections -->
+          <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder rounded-2xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3 mb-6 flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>Work Experience</span>
+            </h3>
+
+            <!-- Experience Timeline -->
+            <div class="relative pl-6 border-l-2 border-slate-100 dark:border-slate-800 space-y-6">
+              
+              <!-- Work item 1 -->
+              <div class="relative">
+                <!-- Timeline bullet -->
+                <div class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full border-4 border-white dark:border-darkCard bg-primary"></div>
+                
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white">Intern - Backend Developer</h4>
+                  <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary dark:text-primary-100 flex items-center w-max">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Dec 2025 - Present
+                  </span>
+                </div>
+                
+                <div class="flex items-center space-x-2 text-sm text-slate-500 dark:text-slate-400 mb-3">
+                  <span class="font-bold text-primary dark:text-blue-400 uppercase tracking-wide text-xs">Star Computer Systems Limited</span>
+                  <span>•</span>
+                  <span class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Dhaka, Bangladesh
+                  </span>
+                </div>
+
+                <!-- Contributions list -->
+                <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-400 list-disc list-inside">
+                  <li><strong class="text-slate-800 dark:text-slate-200">Application Development:</strong> Design and build scalable backend software solutions using C# and the ASP.NET Core framework.</li>
+                  <li><strong class="text-slate-800 dark:text-slate-200">Database Management:</strong> Architect and maintain relational databases in SQL Server, utilizing Entity Framework Core for efficient data access and storage.</li>
+                  <li><strong class="text-slate-800 dark:text-slate-200">System Integration:</strong> Implement robust Web APIs and secure CRUD operations to ensure seamless data flow and reliable application performance.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Professional Training Section -->
+          <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder rounded-2xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3 mb-6 flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              <span>Professional Training</span>
+            </h3>
+
+            <div class="p-5 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200/60 dark:border-slate-800/80 mb-6">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <h4 class="font-bold text-slate-900 dark:text-white text-base md:text-lg">
+                    Cross-Platform Apps Using ASP.NET, Angular, React & MAUI
+                  </h4>
+                  <p class="text-sm text-primary dark:text-blue-400 font-medium mt-1">
+                    IsDB-BISEW IT Scholarship Programme
+                  </p>
+                </div>
+                <div class="text-right flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-2">
+                  <span class="px-2 py-0.5 text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/40 rounded">
+                    812 Hours
+                  </span>
+                  <span class="text-xs text-slate-500 font-semibold">Class of 2026</span>
+                </div>
+              </div>
+              
+              <div class="flex items-center space-x-2 text-xs text-slate-400 mb-4">
+                <span class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Dhaka, Bangladesh
+                </span>
+              </div>
+
+              <!-- Training Highlights -->
+              <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Training Highlights</h5>
+              <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 list-disc list-inside">
+                <li>Completed an intensive <span class="font-semibold text-slate-800 dark:text-slate-200">788-hour training program</span> focusing heavily on the Microsoft .NET ecosystem.</li>
+                <li>Developed full-stack enterprise capstone projects demonstrating proficiency in C#, ASP.NET Core, and SPAs.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Projects Section -->
+          <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder rounded-2xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3 mb-6 flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+              </svg>
+              <span>Featured Projects</span>
+            </h3>
+
+            <div class="space-y-6">
+              
+              <!-- Project 1: LedgerAI -->
+              <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900/30 hover:shadow-md transition-shadow duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                    LedgerAI - Financial & Inventory Management System
+                  </h4>
+                  <a href="https://github.com/samiul-bd/LedgerAi" target="_blank" class="flex items-center text-xs font-semibold text-primary dark:text-blue-400 hover:underline shrink-0">
+                    <svg class="h-4 w-4 fill-current mr-1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                    </svg>
+                    GitHub Repo
+                  </a>
+                </div>
+
+                <div class="mb-4">
+                  <span class="text-xs text-slate-400 font-semibold block mb-1.5 uppercase">Technologies</span>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 rounded">ASP.NET Core Web API</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/20 text-indigo-600 dark:text-indigo-400 rounded">C#</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-teal-50 dark:bg-teal-950/20 text-teal-600 dark:text-teal-400 rounded">EF Core</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-cyan-50 dark:bg-cyan-950/20 text-cyan-600 dark:text-cyan-400 rounded">SQL Server</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-sky-50 dark:bg-sky-950/20 text-sky-600 dark:text-sky-400 rounded">React.js</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 rounded">TypeScript</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-purple-50 dark:bg-purple-950/20 text-purple-600 dark:text-purple-400 rounded">Bootstrap</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 rounded">JWT</span>
+                  </div>
+                </div>
+
+                <!-- Project Contributions -->
+                <h5 class="text-xs text-slate-400 font-semibold uppercase mb-2">Key Contributions</h5>
+                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 list-disc list-inside">
+                  <li><strong class="text-slate-800 dark:text-slate-200">Architected:</strong> An enterprise-grade full-stack accounting application featuring Chart of Accounts, Journal Entries, and Store Ledger modules.</li>
+                  <li><strong class="text-slate-800 dark:text-slate-200">Engineered:</strong> Strict double-entry accounting validations and utilized EF Core asynchronous transactions to ensure data integrity between financial and inventory records.</li>
+                  <li><strong class="text-slate-800 dark:text-slate-200">Integrated:</strong> ASP.NET Core Identity with JWT for robust API security, coupled with Axios interceptors for automated React client token management.</li>
+                  <li><strong class="text-slate-800 dark:text-slate-200">Developed:</strong> A dynamic, responsive user interface using React and Bootstrap, handling complex state management for multi-line transaction forms.</li>
+                </ul>
+              </div>
+
+              <!-- Project 2: Naogaar Aam -->
+              <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900/30 hover:shadow-md transition-shadow duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                    Naogaar Aam - E-commerce & ERP System
+                  </h4>
+                  <a href="https://github.com/samiul-bd/NaogarAam" target="_blank" class="flex items-center text-xs font-semibold text-primary dark:text-blue-400 hover:underline shrink-0">
+                    <svg class="h-4 w-4 fill-current mr-1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                    </svg>
+                    GitHub Repo
+                  </a>
+                </div>
+
+                <div class="mb-4">
+                  <span class="text-xs text-slate-400 font-semibold block mb-1.5 uppercase">Technologies</span>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 rounded">ASP.NET Core</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/20 text-indigo-600 dark:text-indigo-400 rounded">C#</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-teal-50 dark:bg-teal-950/20 text-teal-600 dark:text-teal-400 rounded">Entity Framework Core</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-cyan-50 dark:bg-cyan-950/20 text-cyan-600 dark:text-cyan-400 rounded">SQL Server</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 rounded">Angular</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/20 text-indigo-600 dark:text-indigo-400 rounded">MediatR (CQRS)</span>
+                    <span class="px-2 py-0.5 text-xs font-semibold bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 rounded">TypeScript</span>
+                  </div>
+                </div>
+
+                <!-- Project Contributions -->
+                <h5 class="text-xs text-slate-400 font-semibold uppercase mb-2">Key Contributions</h5>
+                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 list-disc list-inside">
+                  <li><strong class="text-slate-800 dark:text-slate-200">Architected:</strong> A full-stack modular monolith integrating Sales, Inventory, and Financial modules using Clean Architecture and CQRS patterns.</li>
+                  <li><strong class="text-slate-800 dark:text-slate-200">Engineered:</strong> Customer behavior tracking and geo-location data pipelines to analyze ad ROI, cart abandonment, and optimize marketing campaigns.</li>
+                  <li><strong class="text-slate-800 dark:text-slate-200">Developed:</strong> A high-performance Single Page Application (SPA) using Angular, featuring lazy-loaded admin dashboards and robust state management.</li>
+                  <li><strong class="text-slate-800 dark:text-slate-200">Implemented:</strong> Strict data integrity utilizing the Unit of Work pattern, EF Core asynchronous transactions, and global audit trails.</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Academic Qualifications -->
+          <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder rounded-2xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3 mb-6 flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+              </svg>
+              <span>Academic Qualification</span>
+            </h3>
+
+            <!-- Responsive cards for education -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- BBA -->
+              <div class="p-4 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30 rounded-xl flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="px-2 py-0.5 text-xs font-bold bg-primary-100 dark:bg-primary-900/30 text-primary dark:text-primary-100 rounded">BBA</span>
+                    <span class="text-xs text-slate-400 font-semibold">Pass: 2021</span>
+                  </div>
+                  <h4 class="font-bold text-slate-800 dark:text-white text-sm">Accounting</h4>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Naogaon Govt. College</p>
+                  <p class="text-xs text-slate-400 dark:text-slate-500 mt-0.5">National University</p>
+                </div>
+                <div class="border-t border-slate-200 dark:border-slate-800 pt-2.5 mt-3 text-right">
+                  <span class="text-xs text-slate-400">CGPA: </span>
+                  <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">2.45 / 4.00</span>
+                </div>
+              </div>
+
+              <!-- HSC -->
+              <div class="p-4 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30 rounded-xl flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="px-2 py-0.5 text-xs font-bold bg-primary-100 dark:bg-primary-900/30 text-primary dark:text-primary-100 rounded">HSC</span>
+                    <span class="text-xs text-slate-400 font-semibold">Pass: 2015</span>
+                  </div>
+                  <h4 class="font-bold text-slate-800 dark:text-white text-sm">Business Studies</h4>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Naogaon Govt. College</p>
+                  <p class="text-xs text-slate-400 dark:text-slate-500 mt-0.5">Rajshahi Board</p>
+                </div>
+                <div class="border-t border-slate-200 dark:border-slate-800 pt-2.5 mt-3 text-right">
+                  <span class="text-xs text-slate-400">GPA: </span>
+                  <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">4.33 / 5.00</span>
+                </div>
+              </div>
+
+              <!-- SSC -->
+              <div class="p-4 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30 rounded-xl flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="px-2 py-0.5 text-xs font-bold bg-primary-100 dark:bg-primary-900/30 text-primary dark:text-primary-100 rounded">SSC</span>
+                    <span class="text-xs text-slate-400 font-semibold">Pass: 2013</span>
+                  </div>
+                  <h4 class="font-bold text-slate-800 dark:text-white text-sm">Business Studies</h4>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Khidirpur High School</p>
+                  <p class="text-xs text-slate-400 dark:text-slate-500 mt-0.5">Rajshahi Board</p>
+                </div>
+                <div class="border-t border-slate-200 dark:border-slate-800 pt-2.5 mt-3 text-right">
+                  <span class="text-xs text-slate-400">GPA: </span>
+                  <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">4.19 / 5.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- References Section -->
+          <div class="bg-white dark:bg-darkCard border border-slate-200 dark:border-darkBorder rounded-2xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3 mb-6 flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <span>References</span>
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              <!-- Reference 1 -->
+              <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-900/10 relative hover:border-primary/45 transition-colors duration-300">
+                <div class="flex items-start space-x-4 mb-4">
+                  <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-950/40 text-primary dark:text-primary-100 flex items-center justify-center font-bold text-base flex-shrink-0">
+                    SZ
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-850 dark:text-white text-base">Syed Zahidul Hassan</h4>
+                    <p class="text-xs text-primary dark:text-blue-400 font-semibold mt-0.5">Consultant</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Show & Tell Consulting Ltd / IsDB-BISEW</p>
+                  </div>
+                </div>
+                
+                <div class="space-y-2 border-t border-slate-200/60 dark:border-slate-800/80 pt-3 text-xs text-slate-600 dark:text-slate-400">
+                  <div class="flex items-center">
+                    <span class="w-20 font-semibold">Contact No:</span>
+                    <a href="tel:01535110014" class="hover:underline text-slate-800 dark:text-slate-200">01535110014</a>
+                  </div>
+                  <div class="flex items-center">
+                    <span class="w-20 font-semibold">Email:</span>
+                    <a href="mailto:jewelmir81@gmail.com" class="hover:underline text-slate-800 dark:text-slate-200 truncate">jewelmir81@gmail.com</a>
+                  </div>
+                  <div class="flex items-center">
+                    <span class="w-20 font-semibold">Relation:</span>
+                    <span class="text-slate-800 dark:text-slate-200">Consultant / Mentor</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reference 2 -->
+              <div class="p-5 border border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50 dark:bg-slate-900/10 relative hover:border-primary/45 transition-colors duration-300">
+                <div class="flex items-start space-x-4 mb-4">
+                  <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 flex items-center justify-center font-bold text-base flex-shrink-0">
+                    NS
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-850 dark:text-white text-base">Nishat Sharmeen</h4>
+                    <p class="text-xs text-primary dark:text-blue-400 font-semibold mt-0.5">Senior Software Eng. & Faculty</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Star Computer Systems / IsDB-BISEW</p>
+                  </div>
+                </div>
+                
+                <div class="space-y-2 border-t border-slate-200/60 dark:border-slate-800/80 pt-3 text-xs text-slate-600 dark:text-slate-400">
+                  <div class="flex items-center">
+                    <span class="w-20 font-semibold">Contact No:</span>
+                    <a href="tel:01681448998" class="hover:underline text-slate-800 dark:text-slate-200">01681448998</a>
+                  </div>
+                  <div class="flex items-center">
+                    <span class="w-20 font-semibold">Email:</span>
+                    <a href="mailto:nishatsharmeen@gmail.com" class="hover:underline text-slate-800 dark:text-slate-200 truncate">nishatsharmeen@gmail.com</a>
+                  </div>
+                  <div class="flex items-center">
+                    <span class="w-20 font-semibold">Relation:</span>
+                    <span class="text-slate-800 dark:text-slate-200">Faculty / Supervisor</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- 2. CLASSIC PDF MODE (Exact copy of LaTeX CV) -->
+    <div id="classic-mode" class="hidden transition-all duration-500 pb-16 font-latex">
+      
+      <!-- ================= PAGE 1 ================= -->
+      <div class="pdf-page text-[10.5pt] text-black leading-[1.35] relative">
+        
+        <!-- Header Section -->
+        <div class="flex justify-between items-start">
+          <!-- Name & Details -->
+          <div class="flex-grow">
+            <h1 class="text-[26pt] font-bold tracking-wide uppercase leading-none font-serif text-black m-0 mb-1">
+              MD. SAMIUL ALAM
+            </h1>
+            <h2 class="text-[15.5pt] font-semibold text-primary m-0 mb-4 font-serif">
+              Software Developer
+            </h2>
+            
+            <!-- Contact Grid -->
+            <table class="text-[10pt] font-serif border-none m-0 p-0" style="border-collapse: collapse;">
+              <tr>
+                <td class="p-0 pr-2 font-bold py-[1.5px]" style="border:none;">Phone</td>
+                <td class="p-0 pr-2 py-[1.5px]" style="border:none;">:</td>
+                <td class="p-0 py-[1.5px]" style="border:none;">+880 1945 207270</td>
+              </tr>
+              <tr>
+                <td class="p-0 pr-2 font-bold py-[1.5px]" style="border:none;">Email</td>
+                <td class="p-0 pr-2 py-[1.5px]" style="border:none;">:</td>
+                <td class="p-0 py-[1.5px]" style="border:none;"><a href="mailto:samiulalam.bd.ngn@gmail.com" class="text-[#002b80] hover:underline">samiulalam.bd.ngn@gmail.com</a></td>
+              </tr>
+              <tr>
+                <td class="p-0 pr-2 font-bold py-[1.5px]" style="border:none;">GitHub</td>
+                <td class="p-0 pr-2 py-[1.5px]" style="border:none;">:</td>
+                <td class="p-0 py-[1.5px]" style="border:none;"><a href="https://github.com/samiul-bd" target="_blank" class="text-[#002b80] hover:underline">https://github.com/samiul-bd</a></td>
+              </tr>
+              <tr>
+                <td class="p-0 pr-2 font-bold py-[1.5px]" style="border:none;">LinkedIn</td>
+                <td class="p-0 pr-2 py-[1.5px]" style="border:none;">:</td>
+                <td class="p-0 py-[1.5px]" style="border:none;"><a href="https://www.linkedin.com/in/samiulalam-bd/" target="_blank" class="text-[#002b80] hover:underline">https://www.linkedin.com/in/samiulalam-bd/</a></td>
+              </tr>
+            </table>
+          </div>
+          
+          <!-- Profile Pic -->
+          <div class="w-[125px] h-[155px] flex-shrink-0 ml-4 border border-gray-300">
+            <img src="profile.jpg" alt="MD. Samiul Alam Profile" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div>
+          <h3 class="latex-section-title">Professional Summary</h3>
+          <p class="text-justify font-serif leading-[1.35] m-0">
+            Results-driven Software Engineer and .NET Developer specializing in designing and building scalable backend solutions. Proficient in C#, ASP.NET Core, and SQL Server, with a strong focus on architecting relational databases and implementing robust Web APIs. Transitioned into software engineering with a commitment to continuous learning, successfully applying system integration skills to ensure seamless data flow and reliable application performance in fast-paced environments.
+          </p>
+        </div>
+
+        <!-- Work History -->
+        <div>
+          <h3 class="latex-section-title">Work History</h3>
+          <div class="mb-2">
+            <div class="flex justify-between items-baseline font-serif">
+              <span class="font-bold text-[11pt]">Intern</span>
+              <span class="font-bold text-[10pt] flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1 inline" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                </svg>Dec 2025 - Present
+              </span>
+            </div>
+            <div class="font-bold text-primary text-[10.5pt] font-serif tracking-wide">
+              STAR COMPUTER SYSTEMS LIMITED
+            </div>
+            <div class="flex items-center text-[9.5pt] text-black font-serif mt-0.5 mb-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1 inline" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>Dhaka, Bangladesh
+            </div>
+            
+            <ul class="list-none p-0 m-0 space-y-[4px]">
+              <li class="pl-4 relative font-serif text-justify">
+                <span class="absolute left-0">-</span>
+                <span class="font-bold">Application Development:</span> Design and build scalable backend software solutions using C# and the ASP.NET Core framework.
+              </li>
+              <li class="pl-4 relative font-serif text-justify">
+                <span class="absolute left-0">-</span>
+                <span class="font-bold">Database Management:</span> Architect and maintain relational databases in SQL Server, utilizing Entity Framework Core for efficient data access and storage.
+              </li>
+              <li class="pl-4 relative font-serif text-justify">
+                <span class="absolute left-0">-</span>
+                <span class="font-bold">System Integration:</span> Implement robust Web APIs and secure CRUD operations to ensure seamless data flow and reliable application performance.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div>
+          <h3 class="latex-section-title">Technical Skills</h3>
+          <div class="grid grid-cols-2 gap-x-12 gap-y-[4px] font-serif text-[10pt]">
+            <div class="space-y-[4px]">
+              <div class="relative pl-4"><span class="absolute left-0">-</span><span class="font-bold">Languages:</span> C#, JavaScript, TypeScript, HTML/CSS.</div>
+              <div class="relative pl-4"><span class="absolute left-0">-</span><span class="font-bold">Frameworks:</span> ASP.NET Core MVC/API, Angular, React.</div>
+              <div class="relative pl-4"><span class="absolute left-0">-</span><span class="font-bold">Databases:</span> MS SQL Server, Entity Framework Core.</div>
+            </div>
+            <div class="space-y-[4px]">
+              <div class="relative pl-4"><span class="absolute left-0">-</span><span class="font-bold">Architecture:</span> RESTful API, Clean Architecture, CQRS.</div>
+              <div class="relative pl-4"><span class="absolute left-0">-</span><span class="font-bold">Security:</span> ASP.NET Core Identity, JWT Authentication.</div>
+              <div class="relative pl-4"><span class="absolute left-0">-</span><span class="font-bold">Tools:</span> Git, GitHub, Postman, Swagger.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Professional Training Summary -->
+        <div class="mt-2">
+          <h3 class="latex-section-title">Professional Training Summary</h3>
+          <table class="latex-table font-serif">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="w-[35%]">Title</th>
+                <th class="w-[35%]">Institute</th>
+                <th class="w-[12%]">Location</th>
+                <th class="w-[8%]">Year</th>
+                <th class="w-[10%]">Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cross-Platform Apps Using ASP.NET, Angular, React & MAUI</td>
+                <td>IsDB-BISEW IT Scholarship Programme</td>
+                <td>Dhaka</td>
+                <td>2026</td>
+                <td>812 Hours</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div class="mt-2.5">
+            <div class="font-bold font-serif mb-1 text-[10pt]">Training Highlights:</div>
+            <ul class="list-none p-0 m-0 space-y-[4px] text-[10pt]">
+              <li class="pl-4 relative font-serif text-justify">
+                <span class="absolute left-0">-</span>Completed an intensive 788-hour training program focusing heavily on the Microsoft .NET ecosystem.
+              </li>
+              <li class="pl-4 relative font-serif text-justify">
+                <span class="absolute left-0">-</span>Developed full-stack enterprise capstone projects demonstrating proficiency in C#, ASP.NET Core, and SPAs.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Page 1 of 2 Footer -->
+        <div class="absolute bottom-6 right-8 text-[9pt] font-serif text-black">
+          Page 1 of 2
+        </div>
+
+      </div>
+
+      <!-- ================= PAGE 2 ================= -->
+      <div class="pdf-page text-[10.5pt] text-black leading-[1.35] relative">
+        
+        <!-- Projects -->
+        <div>
+          <h3 class="latex-section-title mt-0">Projects</h3>
+          
+          <div class="space-y-4">
+            
+            <!-- Project 1 -->
+            <div>
+              <div class="flex justify-between items-baseline font-serif">
+                <span class="font-bold text-[11pt] text-[#002b80]">LedgerAI - Financial & Inventory Management System</span>
+                <span class="text-[9.5pt]"><span class="font-bold">GitHub:</span></span>
+              </div>
+              <div class="flex justify-between items-baseline font-serif">
+                <a href="https://github.com/samiul-bd/LedgerAi" target="_blank" class="text-primary hover:underline text-[9.5pt] -mt-0.5">https://github.com/samiul-bd/LedgerAi</a>
+                <span></span>
+              </div>
+              
+              <div class="text-[9.5pt] font-serif mt-1.5 mb-1.5">
+                <span class="font-bold">Technologies:</span> ASP.NET Core Web API, C#, Entity Framework Core, SQL Server, React.js, TypeScript, Bootstrap, JWT
+              </div>
+              
+              <div class="font-bold font-serif text-[9.5pt] mb-1">Contribution:</div>
+              <ul class="list-none p-0 m-0 space-y-[4px] text-[9.5pt]">
+                <li class="pl-4 relative font-serif text-justify">
+                  <span class="absolute left-0">-</span>Architected an enterprise-grade full-stack accounting application featuring Chart of Accounts, Journal Entries, and Store Ledger modules.
+                </li>
+                <li class="pl-4 relative font-serif text-justify">
+                  <span class="absolute left-0">-</span>Engineered strict double-entry accounting validations and utilized EF Core asynchronous transactions to ensure data integrity between financial and inventory records.
+                </li>
+                <li class="pl-4 relative font-serif text-justify">
+                  <span class="absolute left-0">-</span>Integrated ASP.NET Core Identity with JWT for robust API security, coupled with Axios interceptors for automated React client token management.
+                </li>
+                <li class="pl-4 relative font-serif text-justify">
+                  <span class="absolute left-0">-</span>Developed a dynamic, responsive user interface using React and Bootstrap, handling complex state management for multi-line transaction forms.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Project 2 -->
+            <div>
+              <div class="flex justify-between items-baseline font-serif">
+                <span class="font-bold text-[11pt] text-[#002b80]">Naogaar Aam - E-commerce & ERP System</span>
+                <span class="text-[9.5pt]"><span class="font-bold">GitHub:</span></span>
+              </div>
+              <div class="flex justify-between items-baseline font-serif">
+                <a href="https://github.com/samiul-bd/NaogarAam" target="_blank" class="text-primary hover:underline text-[9.5pt] -mt-0.5">https://github.com/samiul-bd/NaogarAam</a>
+                <span></span>
+              </div>
+              
+              <div class="text-[9.5pt] font-serif mt-1.5 mb-1.5">
+                <span class="font-bold">Technologies:</span> ASP.NET Core, C#, Entity Framework Core, SQL Server, Angular, MediatR (CQRS), TypeScript
+              </div>
+              
+              <div class="font-bold font-serif text-[9.5pt] mb-1">Contribution:</div>
+              <ul class="list-none p-0 m-0 space-y-[4px] text-[9.5pt]">
+                <li class="pl-4 relative font-serif text-justify">
+                  <span class="absolute left-0">-</span>Architected a full-stack modular monolith integrating Sales, Inventory, and Financial modules using Clean Architecture and CQRS patterns.
+                </li>
+                <li class="pl-4 relative font-serif text-justify">
+                  <span class="absolute left-0">-</span>Engineered customer behavior tracking and geo-location data pipelines to analyze ad ROI, cart abandonment, and optimize marketing campaigns.
+                </li>
+                <li class="pl-4 relative font-serif text-justify">
+                  <span class="absolute left-0">-</span>Developed a high-performance Single Page Application (SPA) using Angular, featuring lazy-loaded admin dashboards and robust state management.
+                </li>
+                <li class="pl-4 relative font-serif text-justify">
+                  <span class="absolute left-0">-</span>Implemented strict data integrity utilizing the Unit of Work pattern, EF Core asynchronous transactions, and global audit trails.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Academic Qualification -->
+        <div>
+          <h3 class="latex-section-title">Academic Qualification</h3>
+          <table class="latex-table font-serif">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="w-[10%]">Title</th>
+                <th class="w-[20%]">Subject/Group</th>
+                <th class="w-[25%]">Institute</th>
+                <th class="w-[25%]">University/Board</th>
+                <th class="w-[10%]">Passing Year</th>
+                <th class="w-[10%]">Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-bold">BBA</td>
+                <td>Accounting</td>
+                <td>Naogaon Govt. College</td>
+                <td>National University</td>
+                <td>2021</td>
+                <td>2.45 / 4.00</td>
+              </tr>
+              <tr>
+                <td class="font-bold">HSC</td>
+                <td>Business Studies</td>
+                <td>Naogaon Govt. College</td>
+                <td>Rajshahi Board</td>
+                <td>2015</td>
+                <td>4.33 / 5.00</td>
+              </tr>
+              <tr>
+                <td class="font-bold">SSC</td>
+                <td>Business Studies</td>
+                <td>Khidirpur High School</td>
+                <td>Rajshahi Board</td>
+                <td>2013</td>
+                <td>4.19 / 5.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Language -->
+        <div>
+          <h3 class="latex-section-title">Language</h3>
+          <ul class="list-none p-0 m-0 space-y-[4px] font-serif text-[10pt]">
+            <li class="pl-4 relative">
+              <span class="absolute left-0">-</span><span class="font-bold">English:</span> Fluent - Professional communication.
+            </li>
+            <li class="pl-4 relative">
+              <span class="absolute left-0">-</span><span class="font-bold">Bengali:</span> Native.
+            </li>
+          </ul>
+        </div>
+
+        <!-- References -->
+        <div>
+          <h3 class="latex-section-title">References</h3>
+          <div class="grid grid-cols-2 gap-x-12 font-serif text-[9.5pt] leading-[1.4]">
+            <!-- Reference 1 -->
+            <div>
+              <div class="mb-1"><span class="font-bold">Name:</span> Syed Zahidul Hassan</div>
+              <div class="mb-1"><span class="font-bold">Designation:</span> Consultant</div>
+              <div class="mb-1"><span class="font-bold">Company:</span> Show & Tell Consulting Ltd / IsDB-BISEW</div>
+              <div class="mb-1"><span class="font-bold">Contact No.:</span> 01535110014</div>
+              <div class="mb-1"><span class="font-bold">Email:</span> <a href="mailto:jewelmir81@gmail.com" class="text-primary hover:underline">jewelmir81@gmail.com</a></div>
+              <div class="mb-1"><span class="font-bold">Relationship:</span> Consultant / Mentor</div>
+            </div>
+            <!-- Reference 2 -->
+            <div>
+              <div class="mb-1"><span class="font-bold">Name:</span> Nishat Sharmeen</div>
+              <div class="mb-1"><span class="font-bold">Designation:</span> Senior Software Eng. & Faculty</div>
+              <div class="mb-1"><span class="font-bold">Company:</span> Star Computer Systems / IsDB-BISEW</div>
+              <div class="mb-1"><span class="font-bold">Contact No.:</span> 01681448998</div>
+              <div class="mb-1"><span class="font-bold">Email:</span> <a href="mailto:nishatsharmeen@gmail.com" class="text-primary hover:underline">nishatsharmeen@gmail.com</a></div>
+              <div class="mb-1"><span class="font-bold">Relationship:</span> Faculty / Supervisor</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page 2 of 2 Footer -->
+        <div class="absolute bottom-6 right-8 text-[9pt] font-serif text-black">
+          Page 2 of 2
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER (no-print) ================= -->
+  <footer class="no-print bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs mt-auto">
+    <div class="max-w-6xl mx-auto px-4 space-y-2">
+      <p class="font-semibold text-slate-300">MD. Samiul Alam &copy; 2026. All rights reserved.</p>
+      <p>Designed with HTML, Tailwind CSS, & JavaScript. Replicated from the original CV PDF.</p>
+    </div>
+  </footer>
+
+  <!-- ================= INTERACTIVE JAVASCRIPT ================= -->
+  <script>
+    // View Switcher (Interactive vs Classic LaTeX PDF)
+    function switchMode(mode) {
+      const interactiveContainer = document.getElementById('interactive-mode');
+      const classicContainer = document.getElementById('classic-mode');
+      const btnInteractive = document.getElementById('btn-interactive');
+      const btnClassic = document.getElementById('btn-classic');
+      const themeToggleBtn = document.getElementById('theme-toggle');
+
+      if (mode === 'interactive') {
+        // Show interactive
+        interactiveContainer.classList.remove('hidden');
+        classicContainer.classList.add('hidden');
+        
+        // Active button styles
+        btnInteractive.className = "px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 shadow bg-primary text-white dark:bg-primary dark:text-white";
+        btnClassic.className = "px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        
+        // Enable theme toggle
+        themeToggleBtn.style.opacity = "1";
+        themeToggleBtn.style.pointerEvents = "auto";
+      } else {
+        // Show classic LaTeX style
+        interactiveContainer.classList.add('hidden');
+        classicContainer.classList.remove('hidden');
+        
+        // Active button styles
+        btnClassic.className = "px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 shadow bg-primary text-white dark:bg-primary dark:text-white";
+        btnInteractive.className = "px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        
+        // Disable/hide theme toggle (Classic is always light-mode paper styled)
+        themeToggleBtn.style.opacity = "0.3";
+        themeToggleBtn.style.pointerEvents = "none";
+      }
+    }
+
+    // Theme toggler (Light / Dark mode)
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const themeToggleBtn = document.getElementById('theme-toggle');
+
+    // Change the icons inside the button based on current state
+    if (document.documentElement.classList.contains('dark')) {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      // Toggle icons
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+
+      // Toggle dark mode class on HTML document
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+</body>
+</html>
