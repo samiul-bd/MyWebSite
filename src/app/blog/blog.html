@@ -1,0 +1,70 @@
+<!-- Technical Blog Articles View -->
+<div class="space-y-8 py-8 animate-fade-in">
+  
+  <!-- Header -->
+  <div class="space-y-2.5 max-w-2xl">
+    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
+      <span>Insights & Writings</span>
+    </div>
+    <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Technical Blog</h1>
+    <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+      In-depth guides, architectural analysis, and engineering solutions to common challenges faced during database optimizations, full-stack systems design, and backend development.
+    </p>
+  </div>
+
+  <!-- Articles list -->
+  <div class="space-y-6">
+    @for (article of articles; track article.title) {
+      <!-- Article Card -->
+      <article class="p-6 md:p-8 bg-[#0e1726]/60 border border-[#1e293b]/50 hover:border-blue-500/30 rounded-2xl flex flex-col justify-between hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 relative group overflow-hidden">
+        
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-600/5 to-purple-600/5 rounded-bl-full blur-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="space-y-4 relative z-10">
+          
+          <!-- Meta (Category, Date, Read Time) -->
+          <div class="flex flex-wrap items-center gap-2 text-xs">
+            <span class="px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 font-bold uppercase tracking-wide">
+              {{ article.category }}
+            </span>
+            <span class="text-slate-500">•</span>
+            <span class="text-slate-400">{{ article.date }}</span>
+            <span class="text-slate-500">•</span>
+            <span class="text-slate-400 font-semibold flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {{ article.readTime }}
+            </span>
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl md:text-2xl font-extrabold text-white group-hover:text-blue-400 transition-colors duration-300">
+            {{ article.title }}
+          </h2>
+
+          <!-- Summary -->
+          <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify">
+            {{ article.summary }}
+          </p>
+
+          <!-- Core Highlights -->
+          <div class="space-y-2 border-t border-[#1e293b]/40 pt-4 mt-2">
+            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Key Takeaways</h3>
+            <ul class="space-y-1.5 text-xs md:text-sm text-slate-300">
+              @for (highlight of article.highlights; track highlight) {
+                <li class="flex items-start space-x-2">
+                  <span class="text-blue-400 shrink-0 mt-0.5">•</span>
+                  <span>{{ highlight }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+        </div>
+
+      </article>
+    }
+  </div>
+
+</div>

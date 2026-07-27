@@ -1,0 +1,107 @@
+<!-- Project Detail Dedicated Route View -->
+<div class="space-y-8 py-4 animate-fade-in">
+
+  <!-- Back navigation button -->
+  <div class="flex items-center">
+    <a routerLink="/portfolio"
+       class="inline-flex items-center space-x-2 text-sm font-semibold text-slate-400 hover:text-white transition duration-300 group">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 transform group-hover:-translate-x-1 transition duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      <span>Back to Portfolio</span>
+    </a>
+  </div>
+
+  @if (projectData(); as project) {
+    <!-- Project Header -->
+    <div class="space-y-2">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">{{ project.title }}</h1>
+      <p class="text-sm md:text-base font-semibold text-blue-400 uppercase tracking-widest">{{ project.subtitle }}</p>
+    </div>
+
+    <!-- Responsive video iframe placeholder at the top -->
+    <div class="relative w-full max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden border border-[#1e293b]/60 bg-[#0e1726]/40 shadow-xl">
+      <iframe class="absolute inset-0 w-full h-full"
+              [src]="project.videoUrl"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- Details Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-4">
+
+      <!-- Tech Stack Left Side (1 Column) -->
+      <div class="lg:col-span-1 space-y-6">
+        <div class="p-6 bg-[#0e1726]/60 border border-[#1e293b]/50 rounded-2xl shadow-sm">
+          <h3 class="text-lg font-bold text-white border-b border-[#1e293b]/40 pb-3 mb-4 flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            <span>Tech Stack</span>
+          </h3>
+          <ul class="space-y-3 text-sm text-slate-300">
+            @for (tech of project.techStack; track tech) {
+              <li class="flex items-start space-x-2.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
+                </svg>
+                <span>{{ tech }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Core Description Right Side (2 Columns) -->
+      <div class="lg:col-span-2 space-y-8">
+
+        <!-- System Architecture Card -->
+        <div class="p-6 bg-[#0e1726]/60 border border-[#1e293b]/50 rounded-2xl shadow-sm space-y-4">
+          <h3 class="text-lg font-bold text-white border-b border-[#1e293b]/40 pb-3 flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            <span>System Architecture</span>
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed text-justify">
+            {{ project.architecture }}
+          </p>
+        </div>
+
+        <!-- Key Challenges Solved Card -->
+        <div class="p-6 bg-[#0e1726]/60 border border-[#1e293b]/50 rounded-2xl shadow-sm space-y-4 relative overflow-hidden group">
+          <!-- Glowing highlight background -->
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+          <h3 class="text-lg font-bold text-white border-b border-[#1e293b]/40 pb-3 flex items-center space-x-2 relative z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span>Key Challenges Solved</span>
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed text-justify relative z-10">
+            {{ project.challenges }}
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  } @else {
+    <!-- Project Not Found -->
+    <div class="py-16 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-slate-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <h2 class="text-2xl font-bold text-white">Project Not Found</h2>
+      <p class="text-slate-400 mt-2">The project you are looking for does not exist in my records.</p>
+      <a routerLink="/portfolio" class="inline-block mt-6 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-sm transition duration-300">
+        Back to Portfolio
+      </a>
+    </div>
+  }
+
+</div>
