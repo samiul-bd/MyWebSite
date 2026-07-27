@@ -31,7 +31,7 @@ export class ProjectDetail implements OnInit {
     naogaaraam: {
       title: 'Naogaar Aam',
       subtitle: 'E-commerce & ERP Monolith',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      videoUrl: '',
       techStack: [
         'C# & ASP.NET Core (Monolithic API Engine)',
         'Angular (SPA Client Interface)',
@@ -45,7 +45,7 @@ export class ProjectDetail implements OnInit {
     lalon: {
       title: 'Lalon',
       subtitle: 'Baul Lyrics & Song Archiving Platform',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      videoUrl: '',
       techStack: [
         'ASP.NET Core Minimal APIs',
         'TypeScript & Tailwind CSS',
@@ -59,7 +59,7 @@ export class ProjectDetail implements OnInit {
     planly: {
       title: 'Planly',
       subtitle: 'Agile Project Planner & Kanban Board',
-      videoUrl: 'https://youtu.be/zCf_-MQ-GD0',
+      videoUrl: '',
       techStack: [
         'ASP.NET Core (CQRS APIs)',
         'Angular with Tailwind CSS',
