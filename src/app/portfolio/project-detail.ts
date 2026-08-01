@@ -44,31 +44,16 @@ export class ProjectDetail implements OnInit {
     },
     lalon: {
       title: 'Lalon',
-      subtitle: 'Baul Lyrics & Song Archiving Platform',
+      subtitle: 'Cognitive AI Architecture & Hybrid Engine',
       videoUrl: '',
       techStack: [
-        'ASP.NET Core Minimal APIs',
-        'TypeScript & Tailwind CSS',
-        'PostgreSQL (Relational Storage)',
-        'Elasticsearch (Full-Text Search Engine)',
-        'HTML5 Audio API (Streaming controls)'
+        'Core Language & Platform: C# & Python Hybrid Architecture',
+        'AI Integration: Gemini API Engine',
+        'Machine Learning: Reinforcement Learning & Simulation Models',
+        'Data Processing: Asynchronous IPC & State Management'
       ],
-      architecture: 'Uses a lightweight Microservice approach where audio streaming, search indexing, and user interactions are partitioned. Interprocess integration is handled via lightweight REST calls, backed by an Elasticsearch cluster matching songs dynamically based on phonetics.',
-      challenges: 'Handling semantic searching across traditional Bengali song lyrics where spellings vary significantly between dialects. This was resolved by creating a custom Bengali word analyzer and character mapper in Elasticsearch, allowing phonetically close search phrases to yield exact lyric associations.'
-    },
-    planly: {
-      title: 'Planly',
-      subtitle: 'Agile Project Planner & Kanban Board',
-      videoUrl: '',
-      techStack: [
-        'ASP.NET Core (CQRS APIs)',
-        'Angular with Tailwind CSS',
-        'SQLite & EF Core (Lightweight local database storage)',
-        'WebSockets (Real-time collaborative updates)',
-        'HTML5 Drag and Drop API'
-      ],
-      architecture: 'A real-time workspace application designed with state-driven styling. The state transitions are broadcast to connected active clients via WebSockets, syncing project boards dynamically in real-time.',
-      challenges: 'Eliminating jitter and race conditions when multiple users edit overlapping board tasks simultaneously. Resolved by applying Operational Transformation algorithms to task positional coordinates, combined with optimistic local state rendering for immediate UI feedback.'
+      architecture: 'Project Lalon is engineered as a hybrid C# and Python cognitive intelligence system designed to simulate biological influences and states on artificial intelligence learning processes. It leverages C# for high-performance backbone infrastructure and state management, while Python handles machine learning computations and neural model adaptations, integrated seamlessly with the Gemini API to evaluate and guide dynamic agent behaviors.',
+      challenges: 'Synchronizing state and data communication efficiently across a multi-language boundary (C# core runtime and Python AI processing pipelines) without introducing latency bottlenecks during real-time reinforcement learning loops. This was resolved by implementing a structured, asynchronous inter-process communication protocol paired with decoupled state caching layers to ensure fluid feedback loops and stable biological simulation metrics.'
     }
   };
 
@@ -80,13 +65,14 @@ export class ProjectDetail implements OnInit {
       this.projectId.set(id);
 
       const rawProject = this.projectDetailsMap[id];
-      if (rawProject) {
-        // Sanitize the YouTube URL to satisfy Angular security policy
+      if (rawProject && rawProject.videoUrl) {
         const sanitizedProject = {
           ...rawProject,
           videoUrl: this.sanitizer.bypassSecurityTrustResourceUrl(rawProject.videoUrl)
         };
         this.projectData.set(sanitizedProject);
+      } else if (rawProject) {
+        this.projectData.set(rawProject);
       } else {
         this.projectData.set(null);
       }

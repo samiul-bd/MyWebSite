@@ -27,24 +27,18 @@ export class Portfolio {
     {
       id: 'lalon',
       title: 'Lalon',
-      subtitle: 'Baul Lyrics & Song Archiving Platform',
-      description: 'A digital preservation and lyrics semantic indexing platform for traditional Baul songs, featuring advanced search filters and interactive audio stream previewers.',
+      subtitle: 'Cognitive AI Architecture & Hybrid Engine',
+      description: 'A hybrid C# and Python cognitive intelligence platform integrating Gemini API to simulate biological influences on reinforcement learning and adaptive decision models.',
       github: 'https://github.com/samiul-bd/Lalon',
       live: 'https://lalon.demo'
-    },
-    {
-      id: 'planly',
-      title: 'Planly',
-      subtitle: 'Agile Project Planner & Kanban Board',
-      description: 'A responsive task tracking board with real-time drag-and-drop actions, column configurations, priority matrix overlays, and detailed analytics dashboards.',
-      github: 'https://github.com/samiul-bd/Planly',
-      live: 'https://planly.demo'
     }
   ];
 
   constructor(private router: Router) {}
 
   protected onCardClick(projectId: string) {
-    this.router.navigate(['/portfolio', projectId]);
+    if (projectId.toLowerCase() === 'ledgerai' || projectId.toLowerCase() === 'lalon') {
+      this.router.navigate(['/portfolio', projectId]);
+    }
   }
 }
