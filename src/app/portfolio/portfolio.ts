@@ -25,19 +25,27 @@ export class Portfolio {
       live: 'https://naogaaraam.demo'
     },
     {
-      id: 'lalon',
-      title: 'Lalon',
-      subtitle: 'Cognitive AI Architecture & Hybrid Engine',
-      description: 'A hybrid C# and Python cognitive intelligence platform integrating Gemini API to simulate biological influences on reinforcement learning and adaptive decision models.',
-      github: 'https://github.com/samiul-bd/Lalon',
-      live: 'https://lalon.demo'
+      id: 'einvoice',
+      title: 'DG_EInvoice',
+      subtitle: 'Enterprise E-Invoice & VAT Engine',
+      description: 'A secure, NBR-compliant Electronic Invoicing & VAT calculation platform guaranteeing zero floating-point precision loss with Visible Digital Seal (VDS) integration.',
+      github: 'https://github.com/samiul-bd/E-Invoice',
+      live: 'https://einvoice.demo'
+    },
+    {
+      id: 'sms',
+      title: 'SMS',
+      subtitle: 'Assignment & Submission Management',
+      description: 'A full-stack, role-based educational web application for schools to manage courses, assignments, student submissions, and grading workflows.',
+      github: 'https://github.com/samiul-bd/SMS',
+      live: 'https://sms.demo'
     }
   ];
 
   constructor(private router: Router) {}
 
   protected onCardClick(projectId: string) {
-    if (projectId.toLowerCase() === 'ledgerai' || projectId.toLowerCase() === 'lalon') {
+    if (projectId.toLowerCase() === 'ledgerai' || projectId.toLowerCase() === 'einvoice' || projectId.toLowerCase() === 'sms') {
       this.router.navigate(['/portfolio', projectId]);
     }
   }

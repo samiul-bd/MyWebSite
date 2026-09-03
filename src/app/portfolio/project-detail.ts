@@ -42,18 +42,33 @@ export class ProjectDetail implements OnInit {
       architecture: 'Structured as a modular monolith following clean architecture guidelines. Feature folders contain scoped business flows. An internal event-driven message pipeline publishes checkouts to inventory and financial bookkeeping modules seamlessly, maintaining strict module independence.',
       challenges: 'Optimizing geo-location data queries to evaluate marketing campaigns and ad metrics without degrading search speeds. Resolved this by building a dedicated Redis caching pipeline for tracking coordinates and using spatial indices in MS SQL Server to perform geographic boundaries distance computations in sub-millisecond durations.'
     },
-    lalon: {
-      title: 'Lalon',
-      subtitle: 'Cognitive AI Architecture & Hybrid Engine',
+    einvoice: {
+      title: 'DG_EInvoice',
+      subtitle: 'Enterprise E-Invoice & VAT Calculation Engine',
       videoUrl: '',
       techStack: [
-        'Core Language & Platform: C# & Python Hybrid Architecture',
-        'AI Integration: Gemini API Engine',
-        'Machine Learning: Reinforcement Learning & Simulation Models',
-        'Data Processing: Asynchronous IPC & State Management'
+        'Backend: C# & ASP.NET Core Web API (.NET 10)',
+        'Frontend: React 19 (TypeScript, Vite, Tailwind CSS v4)',
+        'Database & ORM: SQL Server, Entity Framework Core 10',
+        'Architecture: Clean Architecture',
+        'Compliance: NBR VDS Ready'
       ],
-      architecture: 'Project Lalon is engineered as a hybrid C# and Python cognitive intelligence system designed to simulate biological influences and states on artificial intelligence learning processes. It leverages C# for high-performance backbone infrastructure and state management, while Python handles machine learning computations and neural model adaptations, integrated seamlessly with the Gemini API to evaluate and guide dynamic agent behaviors.',
-      challenges: 'Synchronizing state and data communication efficiently across a multi-language boundary (C# core runtime and Python AI processing pipelines) without introducing latency bottlenecks during real-time reinforcement learning loops. This was resolved by implementing a structured, asynchronous inter-process communication protocol paired with decoupled state caching layers to ensure fluid feedback loops and stable biological simulation metrics.'
+      architecture: 'Engineered for high-throughput billing, automated VAT determination, and regulatory fiscal compliance aligned with National Board of Revenue (NBR) digital seal standards. Built on ASP.NET Core Clean Architecture (.NET 10) with a reactive React 19 + TypeScript dashboard.',
+      challenges: 'Enforcing exact fixed-point decimal arithmetic throughout its domain, persistence, and presentation layers to guarantee zero floating-point precision loss. For authenticity and anti-fraud verification, every issued invoice automatically computes and signs an immutable Visible Digital Seal (VDS) / Encrypted QR Payload, serialized into Base64 for instant scanning and cryptographic auditability.'
+    },
+    sms: {
+      title: 'SMS',
+      subtitle: 'Assignment & Submission Management System',
+      videoUrl: '',
+      techStack: [
+        'Backend: C# & ASP.NET Core Web API (.NET 10), Clean Architecture',
+        'Frontend: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4',
+        'Database: PostgreSQL (Entity Framework Core 10)',
+        'Authentication: JWT Bearer Tokens, BCrypt',
+        'Deployment: Docker & Docker Compose'
+      ],
+      architecture: 'Built on a full-stack Clean Architecture, separating Domain, Application, Infrastructure, and API layers in the .NET 10 backend. The frontend utilizes Next.js App Router for optimal rendering performance. The entire application, including the PostgreSQL database, is containerized using Docker Compose for seamless standalone deployment.',
+      challenges: 'Implementing robust role-based access control (RBAC) across three distinct roles (Admin, Teacher, Student) with complex visibility rules, such as restricting Teachers to only view and manage assignments for their Admin-allocated subjects. Ensured secure authentication using JWT and BCrypt, alongside comprehensive unit testing with xUnit and EF Core In-Memory DB.'
     }
   };
 
